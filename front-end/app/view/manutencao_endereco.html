@@ -1,0 +1,42 @@
+<div class="container" ng-controller="enderecoCtrl">
+	<div class="row">
+		<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+			<form role="form" name="enderecoCadastroForm">
+				<h2><small>:: Cadastro Endereco :: </small></h2>
+				<hr class="colorgraph">
+				<div class="jumbotron">
+					<div >  
+						<h5><small>Selecione uma pessoa:</small></h5>
+						<select class="form-control" ng-model="endereco.listPessoas" ng-options="listPessoa.nome for listPessoa in listPessoas" ng-required="true" ng-change="getEnderecoById(endereco.listPessoas.id)" >
+							<option value="">Selecione uma Pessoa</option>
+						</select>
+					</div>
+				</div>
+			   <table  class="table table-striped">
+		  			<tr>
+		  				<th>Logradouro</th>
+		  				<th>CEP</th>
+		  				<th>Rua</th>
+		  				<th>Bairro</th>
+		  				<th>Numero</th>
+		  				<th>Cidade</th>
+		  				<th>Estado</th>
+		  				<th></th>
+		  				<th></th>
+		  			</tr>
+		  			<tr  ng-repeat="endereco in enderecos" >
+		  				<td>{{endereco.logradouro}}</td>
+		  				<td>{{endereco.cep}}</td>
+		  				<td>{{endereco.rua}}</td>
+		  				<td>{{endereco.bairro}}</td>
+		  				<td>{{endereco.numero}}</td>
+		  				<td>{{endereco.cidade}}</td>
+		  				<td>{{endereco.estado}}</td>
+		  				<td><span class="glyphicon glyphicon-remove" style="color:red;cursor:pointer" ng-click="deleteEndereco(enderecos.idPessoa,endereco.id)" ></span></td>
+		  				<td><a ng-href="#/editar_endereco?idPessoa={{enderecos.idPessoa}}&idEndereco={{endereco.id}}"><span class="glyphicon glyphicon-edit" ></span></a></td>
+		  			</tr>
+		  			
+		  		</table>
+			</div>
+		</div><!-- /.modal -->
+	</div>

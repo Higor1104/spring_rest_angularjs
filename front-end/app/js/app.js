@@ -1,0 +1,1 @@
+angular.module("pessoasEnderecos", ["ngMessages","ngRoute","ui.mask"]);

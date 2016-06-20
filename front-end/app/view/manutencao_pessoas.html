@@ -1,0 +1,53 @@
+<div class="container">
+		  <div class="starter-template">
+		  	<div ng-controller="pessoasCtrl">
+		  		<h2><small> :: Pesquisa Pessoa :: </small></h2>
+		  		<hr class="colorgraph">
+		  		<div class="jumbotron">
+		  			<div class="row">
+		  				<div class="col-md-6">  <form class="navbar-form navbar-left" role="search">
+		  					<div class="form-group">
+		  						<input type="number" ng-model="id" class="form-control" placeholder="Pesquisa por id">
+		  					</div>
+		  					<button type="submit" ng-disabled="!id" ng-click="carregarPessoas(id)" class="btn btn-default">Pesquisar</button>
+		  				</form>
+		  			</div>
+		  				<div class="col-md-6">
+		  					<input type="text" ng-hide="showIcon" ng-model="criBusca"  class="form-control" placeholder="Pesquisa">
+		  				<form class="navbar-form navbar-left" role="search">
+		  					<button type="button" ng-click="carregarAllPessoas()" class="btn btn-success">Pesquisar Todos</button>
+		  				</form>
+		  			</div>
+		  		</div>
+		  	</div>
+		  		<table  class="table table-striped">
+		  			<tr>
+		  				<th><a href="" ng-click="ordernarPor('nome')">Nome</a></th>
+		  				<th>CPF</th>
+		  				<th>Sexo</th>
+		  				<th>Data Nascimento</th>
+		  				<th></th>
+		  				<th></th>
+
+		  			</tr>
+		  			<tr  ng-repeat="pessoa in listPessoas | filter:criBusca | orderBy:criterioDeOrdenacao:direcaoDaOrdenacao" >
+		  				<td>{{pessoa.nome}}</td>
+		  				<td>{{pessoa.cpf}}</td>
+		  				<td>{{pessoa.sexo}}</td>
+		  				<td>{{pessoa.dataNasc}}</td>
+		  				<td><span class="glyphicon glyphicon-remove" style="color:red" ng-click="deletePessoa(pessoa.id)"></span></td>
+		  				<td><a ng-href="#/editar_pessoa?id={{pessoa.id}}"><span class="glyphicon glyphicon-edit" ></span></a></td>
+		  			</tr>
+		  			<tr ng-hide="showIcon">
+		  				<td>{{pessoa.nome}}</td>
+		  				<td>{{pessoa.cpf}}</td>
+		  				<td>{{pessoa.sexo}}</td>
+		  				<td>{{pessoa.dataNasc}}</td>
+		  				<td><span class="glyphicon glyphicon-remove" style="color:red" ng-click="deletePessoa(pessoa.id)"></span></td>
+		  				<td><a ng-href="#/editar_pessoa?id={{pessoa.id}}"><span class="glyphicon glyphicon-edit" ></span></a></td>
+		  			</tr>
+		  			
+		  		</table>
+		  	</div>
+		  </div>
+</div>

@@ -1,0 +1,87 @@
+<div class="container" ng-controller="enderecoCtrl">
+	<div class="row">
+		<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+			<form role="form" name="enderecoCadastroForm">
+				<h2><small>:: Cadastro Endereco :: </small></h2>
+				<hr class="colorgraph">
+				<div class="jumbotron">
+					<div >  
+						<h5><small>Selecione uma pessoa:</small></h5>
+			<select class="form-control" ng-model="endereco.listPessoas" ng-options="listPessoa.nome for listPessoa in listPessoas" ng-required="true" >
+			<option value="">Selecione uma Pessoa</option>
+		</select>
+					</div>
+                    
+					<hr class="colorgraph">
+				</div>
+				<div class="row">
+					<div class="col-xs-6 col-sm-6 col-md-6">
+						<div class="form-group">
+							<h5><small>Logradouro:</small></h5>
+							<input type="text" name="logradouro"  class="form-control input-lg" tabindex="1" ng-model="endereco.logradouro" ng-required="true">
+						</div>
+
+					</div>
+					<div class="col-xs-6 col-sm-6 col-md-6">
+						<div class="form-group">
+							<h5><small>CEP:</small></h5>
+							<input ng-blur="completeWithCep(endereco.cep)" ng-model="endereco.cep" type="text" name="cep" ui-mask="{{maskCep}}" class="form-control input-lg" ng-required="true" tabindex="2">
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-xs-6 col-sm-6 col-md-6">
+						<div class="form-group">
+							<div class="form-group">
+								<h5><small>Bairro:</small></h5>
+								<input ng-model="endereco.bairro"  type="text" ng-required="true" name="bairro"  class="form-control input-lg" tabindex="3">
+							</div>
+							
+						</div>
+					</div>
+					<div class="col-xs-6 col-sm-6 col-md-6">
+						<div class="form-group">
+							<h5><small>Numero:</small></h5>
+							<input ng-model="endereco.numero"  type="number" ng-required="true" name="numero" class="form-control input-lg"  tabindex="4">
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-6 col-sm-6 col-md-6">
+						<div class="form-group">
+							<div class="form-group">
+								<h5><small>Cidade:</small></h5>
+								<input ng-model="endereco.cidade"  type="text" ng-required="true" name="cidade"  class="form-control input-lg" tabindex="5">
+							</div>
+							
+						</div>
+					</div>
+					<div class="col-xs-6 col-sm-6 col-md-6">
+						<div class="form-group">
+							<h5><small>Estado:</small></h5>
+							<input ng-model="endereco.estado"  type="numero" ng-required="true" name="estado" class="form-control input-lg"  tabindex="4">
+						</div>
+					</div>
+				</div>
+				<hr class="colorgraph">
+				<div ng-show="enderecoCadastroForm.cep.$error.required && enderecoCadastroForm.cep.$dirty " class="alert alert-danger" role="alert">
+					<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+					<span class="sr-only">Error:</span>
+					Preencha o campo cep
+				</div>
+				<div ng-show="enderecoCadastroForm.logradouro.$error.required && enderecoCadastroForm.logradouro.$dirty " class="alert alert-danger" role="alert">
+					<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+					<span class="sr-only">Error:</span>
+					Preencha o campo cpf
+				</div>
+			   <div class="row">
+					<div>
+						<input type="button"  ng-click="addEndereco(endereco,endereco.listPessoas.id )" value="Addicionar Endereco" class="btn btn-primary btn-block btn-lg" tabindex="7">
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div><!-- /.modal -->
+</div>
